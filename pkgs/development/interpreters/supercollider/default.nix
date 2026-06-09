@@ -16,6 +16,7 @@
   libxt,
   readline,
   useSCEL ? false,
+  enableOptimizations? true,
   emacs,
   gitUpdater,
   supercollider-with-plugins,
@@ -75,6 +76,7 @@ stdenv.mkDerivation rec {
   cmakeFlags = [
     "-DSC_WII=OFF"
     "-DSC_EL=${if useSCEL then "ON" else "OFF"}"
+    "-DCMAKE_BUILD_TYPE=${if enableOptimizations then "Release" else "RelWithDebInfo"}$"
     (lib.cmakeBool "SC_USE_QTWEBENGINE" true)
   ];
 
