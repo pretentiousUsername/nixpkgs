@@ -6,6 +6,7 @@
   cmake,
   supercollider,
   fftw,
+  fftwFloat,
   gitUpdater,
 }:
 
@@ -20,17 +21,18 @@ stdenv.mkDerivation rec {
 
   strictDeps = true;
 
-  nativeBuildInputs = [ cmake fftw ];
+  nativeBuildInputs = [ cmake ];
 
   buildInputs = [
     supercollider
-    # fftw
+    fftw
+    fftwFloat
   ];
 
   cmakeFlags = [
     "-DSC_PATH=${supercollider}/include/SuperCollider"
     "-DSUPERNOVA=ON"
-    "-FFTW3F_INCLUDE_DIR=${}"
+    # "-FFTW3F_INCLUDE_DIR=${}"
 
   ];
 
