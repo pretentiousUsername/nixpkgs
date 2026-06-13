@@ -20,16 +20,18 @@ stdenv.mkDerivation rec {
 
   strictDeps = true;
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [ cmake fftw ];
 
   buildInputs = [
     supercollider
-    fftw
+    # fftw
   ];
 
   cmakeFlags = [
     "-DSC_PATH=${supercollider}/include/SuperCollider"
     "-DSUPERNOVA=ON"
+    "-FFTW3F_INCLUDE_DIR=${}"
+
   ];
 
   stripDebugList = [
